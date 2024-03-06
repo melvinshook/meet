@@ -29,3 +29,7 @@ Scenario: User decides to add app shortcut to home screen Given that the app is 
    User story: As a user, I should be able to visually see charts for the events so that I can compare data for the events.
 
 Scenario: A user views a chart showing event details Given that the user is viewing the details of an even When the user selects the "charts" option Then the app will dispay charts showing data.
+
+How this Meet App will use serverless functions:
+
+- The Meet App will use serverless functioins for user authentication, access to the Google calendar API. The API sending back events by city and charts displaying event data to authorized users. By using serverless technology the app is also able to scale to the users demands.
