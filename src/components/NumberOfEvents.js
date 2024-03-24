@@ -1,6 +1,9 @@
+import React from "react";
+
 const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
   const handleInputChanged = (event) => {
     const value = event.target.value;
+    setCurrentNOE(value);
 
     // Alerts
     let errorText;
@@ -11,17 +14,16 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
     }
 
     setCurrentNOE(value);
-    setErrorAlert(errorText);
+    // setErrorAlert(errorText);
   };
 
   return (
     <div id="number-of-events">
-      <label htmlFor="number-of-events-input">Number of Events: </label>
       <input
-        type="number"
-        id="number-of-events-input"
-        className="number-of-events-input"
-        defaultValue={32}
+        data-testid="numberOfEventsInput"
+        type="text"
+        className="textboxNumber"
+        defaultValue="32"
         onChange={handleInputChanged}
       />
     </div>

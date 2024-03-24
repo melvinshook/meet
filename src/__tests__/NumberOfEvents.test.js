@@ -8,24 +8,20 @@ describe("<NumberOfEvents /> component", () => {
   beforeEach(() => {
     NumberOfEventsComponent = render(
       <NumberOfEvents setCurrentNOE={() => {}} setErrorAlert={() => {}} />
-    ); //no setNumb ...?
+    );
+  });
+  test("has an element with role of a textbox", () => {
+    const numberTextbox = NumberOfEventsComponent.queryByRole("textbox");
+    expect(numberTextbox).toBeInTheDocument();
+    expect(numberTextbox).toHaveClass("textboxNumber");
+  });
+  test("by default, number of event is listed 32", () => {
+    expect(NumberOfEventsComponent.queryByRole("textbox")).toHaveValue("32");
   });
 
-  test("renders number of events text input", () => {
-    const numberTextBox = NumberOfEventsComponent.queryByRole("spinbutton");
-    expect(numberTextBox).toBeInTheDocument();
-    expect(numberTextBox).toHaveClass("number-of-events-input");
-  });
-
-  test("default value of the input field is 32", () => {
-    const numberTextBox = NumberOfEventsComponent.queryByRole("spinbutton");
-    expect(numberTextBox).toHaveValue(32);
-  });
-
-  test("value changes accordingly when user types", async () => {
-    const user = userEvent.setup();
-    const numberInput = NumberOfEventsComponent.queryByRole("spinbutton");
-    await user.type(numberInput, "{backspace}{backspace}10");
-    expect(numberInput).toHaveValue(10);
+  test("updates number of events when user types", async () => {
+    const numberTextbox = NumberOfEventsComponent.queryByRole("textbox");
+    await userEvent.type(numberTextbox, "{backspace}{backspace}10");
+    expect(numberTextbox.value).toBe("10");
   });
 });
