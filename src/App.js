@@ -48,7 +48,7 @@ const App = () => {
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
         {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
       </div>
-      {isLoading ? <>Loading...</> : null}
+
       <CitySearch
         allLocations={allLocations}
         setCurrentCity={setCurrentCity}
